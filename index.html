@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate Media - SMMA for Chiropractic Clinics</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('market_back.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+            z-index: 1;
+        }
+
+        header, .container, footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header img {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+        }
+
+        header h1 {
+            margin: 10px 0 0;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        nav {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: black;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        section {
+            margin: 50px 0;
+        }
+
+        h2 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .services, .benefits {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service, .benefit, .contact-box {
+            flex-basis: 35%; /* Increased width for spaciousness */
+            max-width: 350px; /* Optional max-width for better readability */
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 15px; /* Rounded corners */
+        }
+
+        .service h3, .benefit h4, .contact-box h2 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #222;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Popup Form Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-content h3 {
+            margin-bottom: 20px;
+        }
+
+        .popup-content label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .popup-content input[type="text"], 
+        .popup-content input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .popup-content button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup-content .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Button to open popup */
+        .open-popup-btn {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            display: block;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .open-popup-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo 2.png" alt="Elevate Media Logo">
+    <h1>Elevate Media</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<div class="container">
+    <!-- Popup Trigger Button -->
+    <button class="open-popup-btn">Get In Touch</button>
+
+    <section id="about">
+        <h2>About Elevate Media</h2>
+        <p>Elevate Media is a dedicated social media marketing agency focused on helping chiropractic clinics grow their online presence and attract more clients. Our expert team leverages data-driven strategies to deliver real results.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Social Media Management</h3>
+                <ul>
+                    <li>Customized social media strategies tailored to your clinic's needs, ensuring a consistent and engaging online presence.</li>
+                    <li>Daily management and posting across key platforms like Facebook and Instagram to maintain audience engagement.</li>
+                    <li>Active engagement with your audience through comments, messages, and posts to build trust and loyalty.</li>
+                    <li>Regular performance reports with insights on engagement metrics, audience growth, and content performance to track effectiveness.</li>
+                    <li>Utilization of trending topics and relevant hashtags to increase visibility and reach new audiences.</li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3>Content Creation</h3>
+                <ul>
+                    <li>High-quality, branded content that resonates with your target audience, enhancing brand recognition and trust.</li>
+                    <li>Graphic design, video editing, and professional copywriting services to create visually appealing and informative posts.</li>
+                    <li>Strategic planning for content that aligns with your business goals, seasonal promotions, and special events.</li>
+                    <li>Regular content calendars to ensure timely posting and consistency across all platforms.</li>
+                </ul>
+            </div>
+            <div class="service">
+                <h3>Ad Campaigns</h3>
+                <ul>
+                    <li>Targeted ad campaigns to reach potential clients in your area, maximizing local visibility and engagement.</li>
+                    <li>Conversion-focused strategies to maximize ROI on ad spend, utilizing A/B testing for optimal results.</li>
+                    <li>Expertise in Facebook Ads and Instagram Ads to ensure effective placement and audience targeting.</li>
+                    <li>Detailed analytics to measure and improve campaign performance, with insights on audience demographics and engagement rates.</li>
+                    <li>Retargeting strategies to reconnect with website visitors and increase conversion chances.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>Why Work With Us</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <h4>Proven Track Record</h4>
+                <p>Our strategies have consistently delivered increased client engagement and conversions.</p>
+            </div>
+            <div class="benefit">
+                <h4>Industry Expertise</h4>
+                <p>We specialize in chiropractic clinics, ensuring we understand your specific market needs.</p>
+            </div>
+            <div class="benefit">
+                <h4>Transparent Communication</h4>
+                <p>We maintain open lines of communication, keeping you updated on progress and results.</p>
+            </div>
+            <div class="benefit">
+                <h4>Affordable Packages</h4>
+                <p>We offer competitive pricing structures designed to fit various budgets while delivering value.</p>
+            </div>
+            <div class="benefit">
+                <h4>Ongoing Support</h4>
+                <p>Our commitment to your success includes continuous monitoring and optimization of strategies.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-box">
+            <h2>Get In Touch</h2>
+            <p>Interested in our services? Reach out today!</p>
+            <button class="open-popup-btn">Contact Us</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Elevate Media. All rights reserved.</p>
+    <p>Contact: info@elevatemedia.com | Phone: (123) 456-7890</p>
+</footer>
+
+<!-- Popup Form -->
+<div class="popup" id="contactPopup">
+    <div class="popup-content">
+        <span class="close-btn" id="closePopup">&times;</span>
+        <h3>Contact Us</h3>
+        <form id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Popup functionality
+    const popup = document.getElementById('contactPopup');
+    const openPopupButtons = document.querySelectorAll('.open-popup-btn');
+    const closePopupButton = document.getElementById('closePopup');
+
+    openPopupButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            popup.style.display = 'flex';
+        });
+    });
+
+    closePopupButton.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your message!');
+        popup.style.display = 'none'; // Close the popup after submission
+        this.reset(); // Clear the form fields
+    });
+</script>
+
+</body>
+</html>
