@@ -103,8 +103,7 @@
         }
 
         .service, .benefit, .contact-box {
-            flex-basis: 35%; /* Increased width for spaciousness */
-            max-width: 350px; /* Optional max-width for better readability */
+            flex-basis: 30%;
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             text-align: center;
@@ -271,54 +270,43 @@
         <h2>Why Work With Us</h2>
         <div class="benefits">
             <div class="benefit">
-                <h4>Proven Track Record</h4>
-                <p>Our strategies have consistently delivered increased client engagement and conversions.</p>
-            </div>
-            <div class="benefit">
                 <h4>Industry Expertise</h4>
                 <p>We specialize in chiropractic clinics, ensuring we understand your specific market needs.</p>
+            </div>
+            <div class="benefit">
+                <h4>Personalized Approach</h4>
+                <p>Each clinic receives a customized strategy tailored to its unique goals and challenges.</p>
             </div>
             <div class="benefit">
                 <h4>Transparent Communication</h4>
                 <p>We maintain open lines of communication, keeping you updated on progress and results.</p>
             </div>
             <div class="benefit">
-                <h4>Affordable Packages</h4>
-                <p>We offer competitive pricing structures designed to fit various budgets while delivering value.</p>
+                <h4>Proven Track Record</h4>
+                <p>Our results speak for themselves. Many of our clients have seen significant growth in their online presence and client base.</p>
             </div>
-            <div class="benefit">
-                <h4>Ongoing Support</h4>
-                <p>Our commitment to your success includes continuous monitoring and optimization of strategies.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <div class="contact-box">
-            <h2>Get In Touch</h2>
-            <p>Interested in our services? Reach out today!</p>
-            <button class="open-popup-btn">Contact Us</button>
         </div>
     </section>
 </div>
 
 <footer>
     <p>&copy; 2024 Elevate Media. All rights reserved.</p>
-    <p>Contact: info@elevatemedia.com | Phone: (123) 456-7890</p>
 </footer>
 
 <!-- Popup Form -->
-<div class="popup" id="contactPopup">
+<div class="popup" id="popup">
     <div class="popup-content">
-        <span class="close-btn" id="closePopup">&times;</span>
+        <span class="close-btn" id="close-btn">&times;</span>
         <h3>Contact Us</h3>
-        <form id="contactForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
+            <label for="message">Message:</label>
+            <input type="text" id="message" name="message" required>
 
             <button type="submit">Send Message</button>
         </form>
@@ -327,32 +315,23 @@
 
 <script>
     // Popup functionality
-    const popup = document.getElementById('contactPopup');
-    const openPopupButtons = document.querySelectorAll('.open-popup-btn');
-    const closePopupButton = document.getElementById('closePopup');
+    const openPopupBtn = document.querySelector('.open-popup-btn');
+    const popup = document.getElementById('popup');
+    const closeBtn = document.getElementById('close-btn');
 
-    openPopupButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            popup.style.display = 'flex';
-        });
+    openPopupBtn.addEventListener('click', () => {
+        popup.style.display = 'flex'; // Use flexbox to center the popup
     });
 
-    closePopupButton.addEventListener('click', () => {
+    closeBtn.addEventListener('click', () => {
         popup.style.display = 'none';
     });
 
+    // Close the popup if user clicks outside of the popup content
     window.addEventListener('click', (event) => {
         if (event.target === popup) {
             popup.style.display = 'none';
         }
-    });
-
-    // Form submission handling
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message!');
-        popup.style.display = 'none'; // Close the popup after submission
-        this.reset(); // Clear the form fields
     });
 </script>
 
